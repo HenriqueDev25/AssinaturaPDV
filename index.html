@@ -6,131 +6,99 @@
     <title>Louisiana PDV | Assinaturas</title>
     <style>
         :root {
-            /* Paleta iOS Dark Mode Autêntica */
-            --primary: #0A84FF; /* systemBlue dark */
-            --primary-highlight: #409CFF;
-            --bg: #000000; /* systemBackground dark */
-            --card-bg: #1C1C1E; /* systemGray6 dark */
-            --separator: #38383A; /* systemGray4 dark */
+            /* Nova Paleta baseada no Verde Solicitado */
+            --primary: #019618; 
+            --primary-highlight: #02b31c;
+            --bg: #000000; 
+            --card-bg: #1C1C1E; 
+            --separator: #38383A; 
             --text: #FFFFFF;
-            --secondary-text: #8E8E93; /* systemGray */
-            --accent: #30D158; /* systemGreen dark */
-            --whatsapp: #25d366; /* Cor original WhatsApp */
+            --secondary-text: #8E8E93; 
+            --accent: #30D158; 
+            --whatsapp: #25d366;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text); 
-            /* Fontes nativas do sistema iOS */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; 
         }
 
-        /* --- Header / iOS Navigation Bar --- */
+        /* --- Header iOS Style --- */
         header { 
-            background: rgba(28, 28, 30, 0.85); /* Translúcido clássico iOS */
+            background: rgba(28, 28, 30, 0.85); 
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             padding: 0 16px; 
             display: flex; 
-            justify-content: center; /* Centralizar logo */
+            justify-content: center; 
             align-items: center; 
             border-bottom: 0.5px solid var(--separator); 
             position: sticky; 
             top: 0; 
             z-index: 1000; 
-            height: 44px; /* Altura padrão iOS Nav Bar */
+            height: 44px; 
         }
-        .logo { font-weight: 700; font-size: 1.1rem; color: #fff; cursor: pointer; text-align: center; }
+        .logo { font-weight: 700; font-size: 1.1rem; color: #fff; cursor: pointer; }
         .logo span { color: var(--primary); }
         
-        #nav-area { position: absolute; right: 16px; display: flex; align-items: center; height: 100%; }
+        #nav-area { position: absolute; right: 16px; }
         #nav-area .btn-header {
             background: transparent; border: none; color: var(--primary); 
-            font-size: 1rem; font-weight: 400; cursor: pointer; padding: 0;
+            font-size: 1rem; cursor: pointer;
         }
 
-        /* --- Container Principal --- */
-        .container { max-width: 600px; margin: 0 auto; padding: 20px 16px 80px 16px; } /* Mobile First width */
+        .container { max-width: 600px; margin: 0 auto; padding: 20px 16px 80px 16px; }
         
         .screen { display: none; animation: iosFadeIn 0.3s ease-out; }
         .screen.active { display: block; }
-        @keyframes iosFadeIn { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
+        @keyframes iosFadeIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
 
-        /* Títulos de Seção iOS */
-        .section-title { font-size: 0.85rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 0.05rem; margin: 25px 16px 8px 16px; font-weight: 400; text-align: left; }
+        .section-title { font-size: 0.85rem; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 0.05rem; margin: 25px 16px 8px 16px; }
 
-        /* --- Estilo iOS Grouped List (Cartões) --- */
+        /* --- Listas Agrupadas (Cards) --- */
         .grouped-list { background: var(--card-bg); border-radius: 12px; border: 0.5px solid var(--separator); overflow: hidden; margin-bottom: 20px; }
 
-        /* --- Planos como Células iOS --- */
-        .plans-list { display: flex; flex-direction: column; }
         .plan-cell { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 16px; border-bottom: 0.5px solid var(--separator); cursor: pointer; transition: 0.2s; 
         }
         .plan-cell:last-child { border-bottom: none; }
-        .plan-cell:active { background-color: var(--separator); } /* Efeito de toque iOS */
+        .plan-cell:active { background-color: var(--separator); }
         
-        .plan-info { display: flex; flex-direction: column; text-align: left; }
-        .plan-name { font-size: 1.1rem; font-weight: 600; color: #fff; }
-        .plan-desc { font-size: 0.9rem; color: var(--secondary-text); margin-top: 2px; }
+        .plan-info { display: flex; flex-direction: column; }
+        .plan-name { font-size: 1.1rem; font-weight: 600; }
+        .plan-desc { font-size: 0.85rem; color: var(--secondary-text); margin-top: 2px; }
         
-        .plan-select-area { display: flex; align-items: center; }
-        .price { font-size: 1.1rem; font-weight: 600; color: #fff; margin-right: 12px; }
-        .chevron { color: var(--secondary-text); font-size: 1.2rem; font-weight: 200; } /* Seta clássica iOS */
+        .price { font-size: 1.05rem; font-weight: 600; color: #fff; margin-right: 8px; }
+        .chevron { color: var(--secondary-text); font-size: 1.2rem; }
 
-        /* --- Inputs e Botões iOS --- */
-        .form-cell { display: flex; align-items: center; padding: 12px 16px; border-bottom: 0.5px solid var(--separator); background: var(--card-bg); }
+        /* --- Formulários --- */
+        .form-cell { display: flex; align-items: center; padding: 12px 16px; border-bottom: 0.5px solid var(--separator); }
         .form-cell:last-child { border-bottom: none; }
-        .form-label { width: 110px; font-size: 1rem; color: #fff; text-align: left; padding-right: 10px; }
-        input { 
-            flex: 1; padding: 4px 0; border: none; background: transparent; color: #fff; 
-            font-size: 1rem; font-family: inherit; outline: none; 
-        }
-        input::placeholder { color: var(--secondary-text); opacity: 0.7; }
+        .form-label { width: 90px; font-size: 1rem; color: #fff; }
+        input { flex: 1; border: none; background: transparent; color: #fff; font-size: 1rem; outline: none; }
 
-        /* Botões Principal / WhatsApp */
-        .btn-container { padding: 10px 16px; }
+        /* --- Botões --- */
         .btn { 
-            width: 100%; padding: 14px; border: none; border-radius: 12px; 
+            width: 100%; padding: 16px; border: none; border-radius: 14px; 
             font-weight: 600; font-size: 1.05rem; cursor: pointer; transition: 0.2s; 
-            display: flex; justify-content: center; align-items: center; text-decoration: none;
+            margin-top: 10px;
         }
-        
         .btn-main { background: var(--primary); color: white; }
-        .btn-main:active { background: var(--primary-highlight); }
+        .btn-main:active { background: var(--primary-highlight); transform: scale(0.98); }
         
-        .btn-whatsapp { background: var(--whatsapp); color: white; }
-        .btn-whatsapp:active { opacity: 0.8; }
-        
-        /* Botão Secundário / Link */
-        .btn-sec { 
-            background: transparent; color: var(--primary); border: none; 
-            font-weight: 400; font-size: 1rem; margin-top: 15px; 
-        }
-        .btn-sec:active { opacity: 0.6; }
+        .btn-whatsapp { background: var(--whatsapp); color: white; margin-top: 20px; }
+        .btn-sec { background: transparent; color: var(--primary); font-weight: 400; }
 
-        /* --- Área do PIX --- */
-        .pix-container { text-align: center; padding: 20px 0; }
-        .qr-code { width: 220px; border-radius: 15px; border: 5px solid #fff; margin-bottom: 15px; }
-        
-        .pay-summary { text-align: center; margin-bottom: 25px; padding: 0 16px; }
-        .pay-summary-title { font-size: 1rem; color: var(--secondary-text); }
-        .pay-summary-value { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-top: 5px; }
-
+        /* --- PIX --- */
+        .pix-box { text-align: center; padding: 20px; }
+        .qr-code { width: 200px; border-radius: 12px; border: 8px solid #fff; margin-bottom: 15px; }
         .copy-area { 
-            background: rgba(142, 142, 147, 0.1); padding: 15px; border-radius: 10px; 
-            font-size: 0.8rem; word-break: break-all; margin: 15px 0; color: #cbd5e1; 
-            border: 0.5px solid var(--separator); 
-        }
-        
-        .hidden { display: none; }
-
-        /* --- Responsividade Adicional --- */
-        @media (min-width: 601px) {
-            .container { padding-top: 40px; }
+            background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; 
+            font-size: 0.75rem; word-break: break-all; color: var(--secondary-text);
+            border: 0.5px solid var(--separator); margin: 10px 0;
         }
     </style>
 </head>
@@ -144,28 +112,38 @@
     <div class="container">
         
         <div id="scr-home" class="screen active">
-            <h1 style="text-align: center; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px;">Planos de Acesso</h1>
-            <p style="text-align: center; color: var(--secondary-text); margin-bottom: 25px; font-size: 1rem;">Selecione o seu tempo de acesso.</p>
+            <h1 style="text-align: center; margin-top: 10px;">Assinatura</h1>
+            <p style="text-align: center; color: var(--secondary-text); margin-bottom: 20px;">Escolha o melhor plano para você.</p>
             
-            <p class="section-title">Opções Disponíveis</p>
-            <div class="grouped-list plans-list">
-                <div class="plan-cell" onclick="selectPlan('Mensal', 'R$ 49,90')">
+            <p class="section-title">Planos Disponíveis</p>
+            <div class="grouped-list">
+                <div class="plan-cell" onclick="selectPlan('Mensal', 'R$ 38,50')">
                     <div class="plan-info">
                         <div class="plan-name">Mensal</div>
-                        <div class="plan-desc">Acesso completo por 30 dias</div>
+                        <div class="plan-desc">30 dias de acesso</div>
                     </div>
-                    <div class="plan-select-area">
-                        <div class="price">R$ 49,90</div>
+                    <div style="display:flex; align-items:center;">
+                        <div class="price">R$ 38,50</div>
                         <div class="chevron">›</div>
                     </div>
                 </div>
-                <div class="plan-cell" onclick="selectPlan('Anual', 'R$ 499,00')">
+                <div class="plan-cell" onclick="selectPlan('Trimestral', 'R$ 148,00')">
+                    <div class="plan-info">
+                        <div class="plan-name">Trimestral</div>
+                        <div class="plan-desc">90 dias de acesso</div>
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <div class="price">R$ 148,00</div>
+                        <div class="chevron">›</div>
+                    </div>
+                </div>
+                <div class="plan-cell" onclick="selectPlan('Anual', 'R$ 324,00')">
                     <div class="plan-info">
                         <div class="plan-name">Anual</div>
-                        <div class="plan-desc">Acesso completo por 1 ano</div>
+                        <div class="plan-desc">1 ano de acesso (Melhor Valor)</div>
                     </div>
-                    <div class="plan-select-area">
-                        <div class="price">R$ 499,00</div>
+                    <div style="display:flex; align-items:center;">
+                        <div class="price">R$ 324,00</div>
                         <div class="chevron">›</div>
                     </div>
                 </div>
@@ -173,63 +151,46 @@
         </div>
 
         <div id="scr-auth" class="screen">
-            <h2 id="auth-title" style="text-align: center; font-weight: 700; font-size: 1.6rem; margin-bottom: 25px;">Crie sua Conta</h2>
-            
-            <p class="section-title">Seus Dados</p>
+            <h2 id="auth-title" style="text-align:center; margin-bottom:20px;">Conta</h2>
             <div class="grouped-list">
                 <div class="form-cell" id="name-group">
-                    <label class="form-label" for="in-name">Nome</label>
-                    <input type="text" id="in-name" placeholder="Nome Completo">
+                    <label class="form-label">Nome</label>
+                    <input type="text" id="in-name" placeholder="Seu nome">
                 </div>
                 <div class="form-cell">
-                    <label class="form-label" for="in-email">E-mail</label>
-                    <input type="email" id="in-email" placeholder="seuemail@gmail.com">
+                    <label class="form-label">E-mail</label>
+                    <input type="email" id="in-email" placeholder="exemplo@gmail.com">
                 </div>
                 <div class="form-cell">
-                    <label class="form-label" for="in-pass">Senha</label>
-                    <input type="password" id="in-pass" placeholder="Mínimo 6 caracteres">
+                    <label class="form-label">Senha</label>
+                    <input type="password" id="in-pass" placeholder="6+ caracteres">
                 </div>
             </div>
-            
-            <div class="btn-container">
-                <button class="btn btn-main" id="btn-do-auth">Continuar</button>
-                <button class="btn btn-sec" id="btn-toggle-auth">Já sou cliente? Login</button>
-                <button class="btn btn-sec" onclick="showScreen('scr-home')" style="color:var(--secondary-text); margin-top:10px;">Voltar</button>
-            </div>
+            <button class="btn btn-main" id="btn-do-auth">Continuar</button>
+            <button class="btn btn-sec" id="btn-toggle-auth">Já tenho uma conta</button>
         </div>
 
         <div id="scr-pay" class="screen">
-            <h2 style="text-align: center; font-weight: 700; font-size: 1.6rem; margin-bottom: 25px; color: var(--accent);">Pagamento PIX</h2>
-            
-            <div class="pay-summary">
-                <p class="pay-summary-title">Plano <span id="pay-plan-name"></span></p>
-                <p id="pay-plan-price" class="pay-summary-value"></p>
+            <h2 style="text-align:center; color:var(--primary);">Pagamento</h2>
+            <div style="text-align:center; margin: 20px 0;">
+                <p id="pay-plan-name" style="color:var(--secondary-text);"></p>
+                <h1 id="pay-plan-price" style="font-size: 2.5rem; color:#fff;"></h1>
             </div>
 
             <div class="grouped-list">
-                <div class="pix-container">
-                    <p style="font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 15px;">Escaneie o QR Code abaixo:</p>
+                <div class="pix-box">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX01369110d321-3309-4db2-b281-5c7ed56b74a05204000053039865802BR5924Pablo Henrique Rodrigues6009SAO PAULO62140510x1ExuEP17b6304365C" class="qr-code">
-                    
-                    <p class="section-title">PIX Copia e Cola</p>
-                    <div style="padding: 0 16px;">
-                        <div class="copy-area" id="pix-string">00020126580014BR.GOV.BCB.PIX01369110d321-3309-4db2-b281-5c7ed56b74a05204000053039865802BR5924Pablo Henrique Rodrigues6009SAO PAULO62140510x1ExuEP17b6304365C</div>
-                        <button class="btn btn-sec" onclick="copyPix(this)" style="font-size: 0.9rem; padding: 5px 0;">Copiar Código PIX</button>
-                    </div>
+                    <p style="font-size:0.9rem; margin-bottom:5px;">Copia e Cola:</p>
+                    <div class="copy-area" id="pix-string">00020126580014BR.GOV.BCB.PIX01369110d321-3309-4db2-b281-5c7ed56b74a05204000053039865802BR5924Pablo Henrique Rodrigues6009SAO PAULO62140510x1ExuEP17b6304365C</div>
+                    <button class="btn btn-sec" onclick="copyPix(this)" style="font-size:0.9rem;">Copiar Código</button>
                 </div>
             </div>
 
-            <p class="section-title">Confirmação</p>
-            <div class="grouped-list" style="background: rgba(37, 211, 102, 0.05); padding: 15px; border: 0.5px solid var(--whatsapp);">
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #fff; text-align: left; margin-bottom: 15px;">
-                    Após o pagamento, é <strong>obrigatório</strong> enviar o comprovante no nosso WhatsApp para a liberação imediata do seu acesso.
-                </p>
+            <div class="grouped-list" style="padding:16px; background: rgba(1, 150, 24, 0.1); border-color: var(--primary);">
+                <p style="font-size:0.9rem; text-align:center;">Após pagar, envie o comprovante para liberar seu acesso.</p>
                 <button class="btn btn-whatsapp" id="btn-whatsapp-send">📦 ENVIAR COMPROVANTE</button>
             </div>
-            
-            <div style="text-align:center; margin-top:15px;">
-                <button class="btn btn-sec" onclick="showScreen('scr-home')" style="color:var(--secondary-text);">Voltar para Home</button>
-            </div>
+            <button class="btn btn-sec" onclick="showScreen('scr-home')">Voltar</button>
         </div>
 
     </div>
@@ -256,47 +217,35 @@
         let isLogin = false;
         let user = null;
 
-        // --- Navegação ---
         window.showScreen = (id) => {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0); // Rolar para o topo ao mudar de tela
+            window.scrollTo(0,0);
         };
 
         window.selectPlan = (name, price) => {
             selPlan = { name, price };
-            if(!user) {
-                showScreen('scr-auth');
-            } else {
-                startPayment();
-            }
+            user ? startPayment() : showScreen('scr-auth');
         };
 
         function startPayment() {
-            document.getElementById('pay-plan-name').innerText = selPlan.name;
+            document.getElementById('pay-plan-name').innerText = "Plano " + selPlan.name;
             document.getElementById('pay-plan-price').innerText = selPlan.price;
             showScreen('scr-pay');
         }
 
-        // --- Auth ---
         document.getElementById('btn-toggle-auth').onclick = () => {
             isLogin = !isLogin;
-            document.getElementById('auth-title').innerText = isLogin ? "Fazer Login" : "Crie sua Conta";
+            document.getElementById('auth-title').innerText = isLogin ? "Login" : "Criar Conta";
             document.getElementById('name-group').style.display = isLogin ? "none" : "flex";
-            document.getElementById('btn-toggle-auth').innerText = isLogin ? "Não tem conta? Cadastre-se" : "Já sou cliente? Login";
+            document.getElementById('btn-toggle-auth').innerText = isLogin ? "Não tem conta? Cadastrar" : "Já tenho conta? Login";
         };
 
         document.getElementById('btn-do-auth').onclick = async () => {
-            const email = document.getElementById('in-email').value.trim();
+            const email = document.getElementById('in-email').value;
             const pass = document.getElementById('in-pass').value;
-            const name = document.getElementById('in-name').value.trim();
-
-            // Validação simples (Melhoria)
-            if(!email || !pass || (!isLogin && !name)) {
-                alert("Por favor, preencha todos os campos.");
-                return;
-            }
-
+            const name = document.getElementById('in-name').value;
+            if(!email || !pass) return alert("Preencha os campos!");
             try {
                 if(isLogin) {
                     await signInWithEmailAndPassword(auth, email, pass);
@@ -304,47 +253,29 @@
                     const res = await createUserWithEmailAndPassword(auth, email, pass);
                     await addDoc(collection(db, "usuarios"), { uid: res.user.uid, nome: name, email });
                 }
-                // Se escolheu um plano antes, vai para pagamento, senão home
                 selPlan ? startPayment() : showScreen('scr-home');
             } catch (e) { alert("Erro: " + e.message); }
         };
 
         onAuthStateChanged(auth, (u) => {
             user = u;
-            const nav = document.getElementById('nav-area');
-            if(u) {
-                nav.innerHTML = `<button class="btn-header" onclick="logout()">Sair</button>`;
-            } else {
-                nav.innerHTML = `<button class="btn-header" onclick="showScreen('scr-auth')">Entrar</button>`;
-            }
+            document.getElementById('nav-area').innerHTML = u ? `<button class="btn-header" onclick="logout()">Sair</button>` : `<button class="btn-header" onclick="showScreen('scr-auth')">Entrar</button>`;
         });
 
         window.logout = () => signOut(auth).then(() => location.reload());
 
-        // --- Cópia PIX com Feedback (Melhoria) ---
-        window.copyPix = (btnElement) => {
-            const text = document.getElementById('pix-string').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                // Feedback visual no botão (estilo iOS)
-                const originalText = btnElement.innerText;
-                btnElement.innerText = "✓ Copiado!";
-                btnElement.style.color = "var(--accent)";
-                btnElement.disabled = true;
-                setTimeout(() => {
-                    btnElement.innerText = originalText;
-                    btnElement.style.color = "var(--primary)";
-                    btnElement.disabled = false;
-                }, 2000);
+        window.copyPix = (btn) => {
+            navigator.clipboard.writeText(document.getElementById('pix-string').innerText).then(() => {
+                const oldText = btn.innerText;
+                btn.innerText = "✓ Copiado!";
+                setTimeout(() => btn.innerText = oldText, 2000);
             });
         };
 
-        // --- ENVIO WHATSAPP ---
         document.getElementById('btn-whatsapp-send').onclick = () => {
-            const numero = "5511981127561"; // Seu número
-            const msg = encodeURIComponent(`Olá, Henrique! Acabei de fazer o pagamento do Louisiana PDV.\n\nPlano: ${selPlan.name}\nValor: ${selPlan.price}\nEmail da conta: ${user.email}\n\nEstou enviando o comprovante abaixo:`);
-            window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
+            const msg = encodeURIComponent(`Olá! Fiz o pagamento do Louisiana PDV.\n\nPlano: ${selPlan.name}\nValor: ${selPlan.price}\nEmail: ${user.email}`);
+            window.open(`https://wa.me/5511981127561?text=${msg}`, '_blank');
         };
-
     </script>
 </body>
 </html>
